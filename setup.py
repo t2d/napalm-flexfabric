@@ -10,7 +10,12 @@ except ImportError:
 __author__ = 'Steffen Walter <steffen.walter@atos.net>'
 
 install_reqs = parse_requirements('requirements.txt', session=uuid.uuid1())
-reqs = [str(ir.req) for ir in install_reqs]
+#reqs = [str(ir.req) for ir in install_reqs]
+# Generator must be converted to list, or we will only have one chance to read each element, meaning that the first requirement will be skipped.
+requirements = list(requirements) 
+try:
+    requirements = [str(ir.req) for ir in install_reqs]
+except:
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
