@@ -16,7 +16,8 @@ requirements = list(requirements)
 try:
     requirements = [str(ir.req) for ir in install_reqs]
 except:
-
+    requirements = [str(ir.requirement) for ir in install_reqs]
+    
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
